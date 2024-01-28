@@ -1,0 +1,21 @@
+{
+    "python.pythonPath": "/Users/kulylanellc/Library/Caches/pypoetry/virtualenvs/eventcatalog-api-36bAStYg-py3.12/bin/activate", // Specify the path to the Python interpreter of the virtual environment
+    "editor.formatOnSave": true, // Automatically format code on save
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests" // Directory where tests are located
+    ],
+    "python.testing.unittestEnabled": false, // If using pytest, disable unittest
+    "python.analysis.typeCheckingMode": "basic", // Options are "off", "basic", or "strict"
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true // Automatically organize imports on save
+        }
+    },
+    // If you're using the Python extension for VS Code, these settings can enable better IntelliSense:
+    "python.analysis.extraPaths": [
+        "./app"
+    ],
+    "editor.wordWrap": "on",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+}
