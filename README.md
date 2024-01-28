@@ -95,7 +95,17 @@ eventcatalog-api/
 └── README.md                   # Project documentation
 ```
 
-## Dev Setup Instructions
+## Dev Setup Instructions (MacOS)
+### Install Brew if not installed
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Install Docker
+```bash
+brew install --cask docker
+```
+
 ### Build the Docker Image
 ```bash
 docker build -t eventcatalog-api .
@@ -109,3 +119,4 @@ docker run -p 8000:80 eventcatalog-api
 ```bash
 poetry run uvicorn eventcatalog_api.server.main:app --reload
 ```
+
