@@ -100,11 +100,19 @@ class Event:
 
 
 def generate_random_event() -> Event:
+    descriptions = [
+        "A captivating event that will leave you inspired.",
+        "An exciting gathering of industry experts and enthusiasts.",
+        "Join us for an informative session filled with valuable insights.",
+        "Experience a unique event that combines education and entertainment.",
+        "Discover the latest trends and innovations in this engaging event.",
+    ]
+
     event = Event(
         name="Random Event",
         version="1.0",
         draft=random.choice([True, False]),
-        summary="Random event summary",
+        summary=random.choice(descriptions),
         domain="Random domain",
         producerNames=["Producer 1", "Producer 2"],
         consumerNames=["Consumer 1", "Consumer 2"],
@@ -153,18 +161,9 @@ class Domain:
 
 
 def generate_domain() -> str:
-    words = [
-        "Business",
-        "IT Support",
-        "Forecasting",
-        "Business Inteliggence",
-        "Billing",
-        "Marketing",
-    ]
+    words = ["Business", "IT", "Billing", "Marketing", "Finance"]
 
-    domain_name = (
-        random.choice(words) + "-" + "".join(random.choices(string.digits, k=3))
-    )
+    domain_name = random.choice(words)
 
     return Domain(
         name=domain_name,

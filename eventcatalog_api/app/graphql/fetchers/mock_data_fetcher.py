@@ -29,7 +29,7 @@ TAGS = get_random_tags_list(DEFAULT_GENERATED_ITEMS_LIMIT)
 OWNERS = get_random_owners_list(2)
 PRODUCERS = [generate_random_service()]
 CONSUMERS = [generate_random_service()]
-VERSIONS = ["1.0", "2.0"]
+VERSIONS = ["v0.1.0", "v0.1.2", "v1.0"]
 SAMPLE_SCHEMA = [generate_random_schema()]
 EVENTS = get_random_events_list(DEFAULT_GENERATED_ITEMS_LIMIT)
 REPOSITORIES = get_random_repository_list(DEFAULT_GENERATED_ITEMS_LIMIT)
@@ -51,13 +51,21 @@ def fetch_domains_list(limit: int = 1) -> List[Domain]:
 
 def fetch_events_list(limit: int = 1) -> List[Event]:
     # Create instances of Event using previously created objects
+    descriptions = [
+        "Leverage Kafka events to streamline your business processes and drive real-time decision making.",
+        "Optimize your business operations with Kafka events, enabling seamless data integration and actionable insights.",
+        "Unlock the power of event-driven architecture with Kafka events to enhance customer experiences and gain a competitive edge.",
+        "Discover the potential of Kafka events for data-driven innovation and strategic business growth.",
+        "Join industry experts to explore the transformative impact of Kafka events on business efficiency and agility.",
+    ]
+
     events = []
     for i in range(0, limit):
         event = Event(
             name=generate_event_name(),
-            version="1.0",
+            version=random.choice(VERSIONS),
             draft=random.choice([True, False]),
-            summary="Random event summary",
+            summary=random.choice(descriptions),
             domain=generate_domain().name,
             producerNames=["Producer 1", "Producer 2"],
             consumerNames=["Consumer 1", "Consumer 2"],
@@ -65,20 +73,24 @@ def fetch_events_list(limit: int = 1) -> List[Event]:
                 Service(
                     name="Producer Service1",
                     summary="Random summary",
-                    version=VERSIONS[0],
+                    version=random.choice(VERSIONS),
                 ),
                 Service(
-                    name="Producer 2", summary="Random summary", version=VERSIONS[0]
+                    name="Producer 2",
+                    summary="Random summary",
+                    version=random.choice(VERSIONS),
                 ),
             ],
             consumers=[
                 Service(
                     name="Consumer Service1",
                     summary="Random summary",
-                    version=VERSIONS[0],
+                    version=random.choice(VERSIONS),
                 ),
                 Service(
-                    name="Consumer 2", summary="Random summary", version=VERSIONS[0]
+                    name="Consumer 2",
+                    summary="Random summary",
+                    version=random.choice(VERSIONS),
                 ),
             ],
             badges=get_random_badge_list(2),
@@ -122,7 +134,7 @@ def fetch_services_list(limit: int = 1) -> List[Service]:
     for i in range(0, limit):
         service = Service(
             name="Random Service",
-            version="1.0.0",
+            version=random.choice(VERSIONS),
             summary="This is a random service",
             draft=random.choice([True, False]),
             repository=generate_random_repo(1),
