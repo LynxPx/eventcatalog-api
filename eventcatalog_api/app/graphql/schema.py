@@ -43,7 +43,7 @@ class Query:
         return domains_lst[:limit]
 
     @strawberry.field
-    def events(self, info, limit: int = 1) -> List[Event]:
+    def events(self, info, limit: int = 10) -> List[Event]:
         # Create instances of Badge, Tag, Owner, and Service
         events_lst = fetch_events_list(limit)
         return events_lst[:limit]

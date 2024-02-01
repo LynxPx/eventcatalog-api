@@ -49,7 +49,7 @@ def fetch_domains_list(limit: int = 1) -> List[Domain]:
     return domains
 
 
-def fetch_events_list(limit: int = 1) -> List[Event]:
+def fetch_events_list(limit: int = 10) -> List[Event]:
     # Create instances of Event using previously created objects
     descriptions = [
         "Leverage Kafka events to streamline your business processes and drive real-time decision making.",
@@ -61,8 +61,13 @@ def fetch_events_list(limit: int = 1) -> List[Event]:
 
     events = []
     for i in range(0, limit):
+        event_r = generate_event_name()
+        event_id = event_r[0]
+        event_name = event_r[1]
+
         event = Event(
-            name=generate_event_name(),
+            id=event_id,
+            name=event_name,
             version=random.choice(VERSIONS),
             draft=random.choice([True, False]),
             summary=random.choice(descriptions),

@@ -44,9 +44,9 @@ class Service:
 
 
 def generate_random_service() -> Service:
-    domain_name = (
-        random.choice(DOMAIN_WORDS) + "-" + "".join(random.choices(string.digits, k=3))
-    )
+    domain_name = random.choice(
+        DOMAIN_WORDS
+    )  # + "-" + "".join(random.choices(string.digits, k=3))
 
     service = Service(
         name="Random Service",
@@ -79,6 +79,7 @@ def generate_random_service() -> Service:
 
 @strawberry.type
 class Event:
+    id: str
     name: str
     version: str
     draft: Optional[bool] = None
@@ -109,6 +110,7 @@ def generate_random_event() -> Event:
     ]
 
     event = Event(
+        id="random-id",
         name="Random Event",
         version="1.0",
         draft=random.choice([True, False]),
@@ -136,16 +138,17 @@ def get_random_events_list(limit: int) -> List[Event]:
 
 def generate_event_name() -> str:
     words = [
-        "Market",
-        "Shop",
-        "Stream",
-        "Data",
-        "Files",
-        "Recipes",
-        "Analytics",
-        "Cars",
+        ("8067545f-0099-4c1a-9bc5-59c421295f37", "Market"),
+        ("aee350b4-fdec-4d8c-85a4-766209c6f59a", "Shop"),
+        ("61faf0c9-1ab8-4596-a2f0-9fea80f9876b", "Stream"),
+        ("800d5a2e-0841-45a9-9d4b-4382eaf989eb", "Data"),
+        ("cf235599-d9a4-4908-ade0-1dd70320c5d9", "Files"),
+        ("a1edc515-303f-426f-b67b-0e87fd2e99be", "Recipes"),
+        ("9f984574-7831-474f-8d5f-a8023f4d8160", "Analytics"),
+        ("c0d06924-28ef-4e3e-b803-c409a39c81a5", "Cars"),
     ]
-    return random.choice(words) + "-" + "".join(random.choices(string.digits, k=3))
+    # return random.choice(words) + "-" + "".join(random.choices(string.digits, k=3))
+    return random.choice(words)
 
 
 @strawberry.type
