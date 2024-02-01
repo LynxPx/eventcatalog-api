@@ -43,10 +43,26 @@ class Query:
         return domains_lst[:limit]
 
     @strawberry.field
-    def events(self, info, limit: int = 10) -> List[Event]:
+    def events(self, info, limit: int = 10, id: str = "") -> List[Event]:
         # Create instances of Badge, Tag, Owner, and Service
         events_lst = fetch_events_list(limit)
+        if id:
+            for event in fetch_events_list(100):
+                if event.id == id:
+                    return [event]
+            return []
         return events_lst[:limit]
+
+    @strawberry.field
+    def event(self, info, id: str = "") -> Event:
+        # Create instances of Badge, Tag, Owner, and Service
+        events_lst = fetch_events_list(100)
+        if id:
+            for event in fetch_events_list(100):
+                if event.id == id:
+                    return event
+            return None
+        return events_lst[0]
 
     @strawberry.field
     def owners(self, info, limit: int = 1) -> List[Owner]:
