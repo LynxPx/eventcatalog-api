@@ -1,3 +1,4 @@
+import json
 import logging
 
 from fastapi import APIRouter, Depends
@@ -22,8 +23,24 @@ async def info():
 @router.get("/neo4j")
 async def run_neo4j_query(db=Depends(get_neo4j_db)):
     return {"message": "Hello Neo4j!"}
-    # results, meta = db.cypher_query("MATCH (n) RETURN n")
-    # return results
+
+
+@router.get("/neo4j/status")
+async def test_neo4j_connection(db=Depends(get_neo4j_db)):
+    try:
+        return {"message": "Neo4j connection is successful!"}
+    except Exception as e:
+        return {"message": f"Failed to connect to Neo4j: {e}"}
+
+
+@router.get("/neo4j/record")
+async def get_neo4j_record(db=Depends(get_neo4j_db)):
+    try:
+        # Query to pull one record from Neo4j
+        record = db.cypher_query("MATCH p=()-->() RETURN p LIMIT 1")
+        return {"record": record}
+    except Exception as e:
+        return {"message": f"Failed to retrieve Neo4j record: {e}"}
 
 
 @router.on_event("startup")

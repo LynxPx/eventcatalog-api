@@ -106,6 +106,11 @@ def fetch_events_list(limit: int = 10) -> List[Event]:
             examples="Random examples",
             schema=generate_random_schema(),
             externalLinks=TAGS[:1],
+            story="""This event can be triggered multiple times per customer. Everytime the customer adds an item to their shopping cart this event will be triggered.
+
+We have a frontend application that allows users to buy things from our store. This front end interacts directly with the Basket Service to add items to the cart. The Basket Service will raise the events.""",
+            alert="When firing this event make sure you set the `correlation-id` in the headers. Our schemas have standard metadata make sure you read and follow it.",
+            sampleTrigger=generate_random_schema(),
         )
         events.append(event)
 

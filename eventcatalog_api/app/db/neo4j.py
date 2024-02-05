@@ -1,5 +1,7 @@
 # app/db/neo4j.py
 
+import logging
+
 from neomodel import config, db
 from pydantic_settings import BaseSettings
 
@@ -25,13 +27,16 @@ neo4j_settings = Neo4jSettings()
 
 # Set up the connection URL for neomodel
 config.DATABASE_URL = neo4j_settings.get_database_url()
+logging.info(f"Neo4j database URL: {config.DATABASE_URL}")
 
 
 # Dependency for FastAPI to yield a neomodel db instance
 def get_neo4j_db():
     try:
+        logging.info("Opening connection to Neo4j database")
         # Here you can perform any setup actions if needed before yielding db
         yield db
     finally:
+        logging.info("Closing connection to Neo4j database")
         # Here you can perform any teardown or cleanup actions if needed
         pass

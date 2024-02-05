@@ -98,6 +98,9 @@ class Event:
     schema: Optional[Schema] = None  # Any type?
     externalLinks: Optional[List[Tag]] = None
     owners: Optional[List[Owner]] = None
+    story: Optional[str] = None
+    alert: Optional[str] = None
+    sampleTrigger: Optional[Schema] = None
 
 
 def generate_random_event() -> Event:
@@ -128,6 +131,9 @@ def generate_random_event() -> Event:
         examples="Random examples",
         schema=generate_random_schema(),
         externalLinks=get_random_tags_list(1),
+        story="Random event lengthy story",
+        alert="Random event alert",
+        sampleTrigger=generate_random_schema(),
     )
     return event
 

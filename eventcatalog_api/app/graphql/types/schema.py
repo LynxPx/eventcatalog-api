@@ -6,22 +6,165 @@ import strawberry
 
 @strawberry.type
 class Schema:
+    id: Optional[str] = None
     snippet: str
     language: str
     extension: Optional[str] = None
 
 
 def generate_random_schema() -> Schema:
-    snippets = ["snippet1", "snippet2", "snippet3"]  # Replace with your actual snippets
+    snippets = [
+        """{
+  "$id": "https://example.com/AddedItemToCart.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AddedItemToCart",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain of the event"
+        },
+        "service": {
+          "type": "string",
+          "description": "The name of the service that triggered the event"
+        }
+      },
+      "required": ["correlationId", "domain"]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "itemId": {
+          "type": "string",
+          "description": "The ID of the shopping item"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "How many items the user wants to add to their shopping cart",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 1
+        }
+      }
+    }
+  }
+}
+""",
+        """{
+  "$id": "https://example.com/AddedItemToCart.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AddedItemToCart",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain of the event"
+        },
+        "service": {
+          "type": "string",
+          "description": "The name of the service that triggered the event"
+        }
+      },
+      "required": ["correlationId", "domain"]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "itemId": {
+          "type": "string",
+          "description": "The ID of the shopping item"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "How many items the user wants to add to their shopping cart",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 1
+        }
+      }
+    }
+  }
+}
+""",
+        """{
+  "$id": "https://example.com/AddedItemToCart.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AddedItemToCart",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "domain": {
+          "type": "string",
+          "description": "The domain of the event"
+        },
+        "service": {
+          "type": "string",
+          "description": "The name of the service that triggered the event"
+        }
+      },
+      "required": ["correlationId", "domain"]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The ID of the user"
+        },
+        "itemId": {
+          "type": "string",
+          "description": "The ID of the shopping item"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "How many items the user wants to add to their shopping cart",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 1
+        }
+      }
+    }
+  }
+}
+""",
+    ]  # Replace with your actual snippets
     languages = [
-        "language1",
-        "language2",
-        "language3",
+        "json",
+        "json",
+        "json",
     ]  # Replace with your actual languages
     extensions = [
-        "extension1",
-        "extension2",
-        "extension3",
+        ".json",
+        ".json",
+        ".json",
     ]  # Replace with your actual extensions
 
     random_snippet = random.choice(snippets)

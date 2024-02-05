@@ -52,7 +52,6 @@ app.include_router(graphql_app, prefix="/graphql")
 # Include the additional routes
 app.include_router(additional_routes_router)
 
-
 if __name__ == "__main__":
     import uvicorn
 
