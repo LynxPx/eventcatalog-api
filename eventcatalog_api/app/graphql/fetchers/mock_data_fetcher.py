@@ -140,10 +140,11 @@ def fetch_schema_list(limit: int = 1) -> List[Schema]:
 def fetch_services_list(limit: int = 1) -> List[Service]:
     # Generate service objects using random generators or any other logic
     services = []
+    services_names = ["ServiceA", "ServiceB", "ServiceX", "ServiceY"]
 
     for i in range(0, limit):
         service = Service(
-            name="Random Service",
+            name=random.choice(services_names),
             version=random.choice(VERSIONS),
             summary="This is a random service",
             draft=random.choice([True, False]),
