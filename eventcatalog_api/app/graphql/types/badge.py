@@ -15,7 +15,7 @@ class Badge:
 
 
 def generate_random_badge() -> Badge:
-    badge_content = ["New!", "Recently Updated", "Deprecated"]
+    badge_content = ["New", "Recently Updated", "Deprecated", "Draft"]
     content = random.choice(badge_content)
 
     backgroundColor = random.choice(
