@@ -17,7 +17,11 @@ from eventcatalog_api.app.graphql.types.repository import (
     generate_random_repo,
     get_random_repository_list,
 )
-from eventcatalog_api.app.graphql.types.schema import Schema, generate_random_schema
+from eventcatalog_api.app.graphql.types.schema import (
+    Schema,
+    generate_random_schema,
+    generate_random_trigger_schema,
+)
 from eventcatalog_api.app.graphql.types.tag import Tag, get_random_tags_list
 from eventcatalog_api.app.graphql.types.user import User, generate_random_user
 
@@ -110,7 +114,7 @@ def fetch_events_list(limit: int = 10) -> List[Event]:
 
 We have a frontend application that allows users to buy things from our store. This front end interacts directly with the Basket Service to add items to the cart. The Basket Service will raise the events.""",
             alert="When firing this event make sure you set the `correlation-id` in the headers. Our schemas have standard metadata make sure you read and follow it.",
-            sampleTrigger=generate_random_schema(),
+            sampleTrigger=generate_random_trigger_schema(),
         )
         events.append(event)
 

@@ -174,3 +174,41 @@ def generate_random_schema() -> Schema:
     return Schema(
         snippet=random_snippet, language=random_language, extension=random_extension
     )
+
+
+def generate_random_trigger_schema() -> Schema:
+    snippets = [
+        """
+var kafka = require('kafka-node'),
+  Consumer = kafka.Consumer,
+  client = new kafka.KafkaClient(),
+  consumer = new Consumer(
+    client,
+    [
+      { topic: 't', partition: 0 },
+      { topic: 'AddedItemToCart', partition: 1 },
+    ],
+    {
+      autoCommit: false,
+    }
+  );
+
+consumer.on('message', function (message) {
+  console.log(message);
+});
+"""
+    ]  # Replace with your actual snippets
+    languages = [
+        "js",
+    ]  # Replace with your actual languages
+    extensions = [
+        ".js",
+    ]  # Replace with your actual extensions
+
+    random_snippet = snippets[0]
+    random_language = languages[0]
+    random_extension = extensions[0]
+
+    return Schema(
+        snippet=random_snippet, language=random_language, extension=random_extension
+    )
