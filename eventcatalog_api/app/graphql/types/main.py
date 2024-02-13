@@ -142,6 +142,10 @@ def get_random_events_list(limit: int) -> List[Event]:
     return [generate_random_event() for _ in range(limit)]
 
 
+def get_controlled_events_list(limit: int) -> List[Event]:
+    return [generate_random_event() for _ in range(limit)]
+
+
 def generate_event_name() -> str:
     words = [
         ("8067545f-0099-4c1a-9bc5-59c421295f37", "Market"),
@@ -170,9 +174,16 @@ class Domain:
 
 
 def generate_domain() -> str:
-    words = ["Business", "IT", "Billing", "Marketing", "Finance"]
+    domain_names = [
+        "Intake",
+        "Compliance",
+        "Case Management",
+        "Account Management",
+        "Taxpayer Experience",
+        "Internal Operations",
+    ]
 
-    domain_name = random.choice(words)
+    domain_name = random.choice(domain_names)
 
     return Domain(
         name=domain_name,
@@ -184,3 +195,68 @@ def generate_domain() -> str:
         externalLinks=[get_random_tags_list(2)],
         badges=get_random_badge_list(1),
     )
+
+
+def generate_controlled_domains() -> List[Domain]:
+    return [
+        Domain(
+            name="Intake",
+            summary="Summary for {}".format("Intake"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+        Domain(
+            name="Compliance",
+            summary="Summary for {}".format("Compliance"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+        Domain(
+            name="Case Management",
+            summary="Summary for {}".format("Case Management"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+        Domain(
+            name="Account Management",
+            summary="Summary for {}".format("Account Management"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+        Domain(
+            name="Taxpayer Experience",
+            summary="Summary for {}".format("Taxpayer Experience"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+        Domain(
+            name="Internal Operations",
+            summary="Summary for {}".format("Internal Operations"),
+            services=generate_random_service(),
+            events=get_random_events_list(3),
+            owners=get_random_owners_list(2),
+            tags=get_random_tags_list(2),
+            externalLinks=[get_random_tags_list(2)],
+            badges=get_random_badge_list(1),
+        ),
+    ]

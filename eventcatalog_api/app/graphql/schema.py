@@ -17,6 +17,8 @@ from eventcatalog_api.app.graphql.types.user import User
 
 from .fetchers.mock_data_fetcher import (
     fetch_badges_list,
+    fetch_controlled_events_list,
+    fetch_controlled_services_list,
     fetch_domains_list,
     fetch_events_list,
     fetch_owners_list,
@@ -46,7 +48,9 @@ class Query:
                     return e
 
     @strawberry.field
-    def domains(self, info, limit: int = 10) -> List[Domain]:
+    def domains(self, info, limit: int = 6, controlled: bool = True) -> List[Domain]:
+        if controlled:
+            return fetch_domains_list(limit, controlled)
         # Create instances of Domain
         domains_lst = fetch_domains_list(limit)
         return domains_lst[:limit]
@@ -59,8 +63,20 @@ class Query:
                     return e
 
     @strawberry.field
-    def events(self, info, limit: int = 10, id: str = "") -> List[Event]:
+    def events(
+        self, info, limit: int = 10, id: str = "", controlled: bool = True
+    ) -> List[Event]:
         # Create instances of Badge, Tag, Owner, and Service
+        if controlled:
+            controlled_events = fetch_controlled_events_list()
+
+            if id:
+                for e in controlled_events:
+                    if e.id == id:
+                        return [e]
+                return []
+            return controlled_events[:limit]
+
         events_lst = fetch_events_list(limit)
         if id:
             for e in fetch_events_list(100):
@@ -70,9 +86,12 @@ class Query:
         return events_lst[:limit]
 
     @strawberry.field
-    def event(self, info, id: str = "") -> Optional[Event]:
+    def event(self, info, id: str = "", controlled: bool = True) -> Optional[Event]:
         # Create instances of Badge, Tag, Owner, and Service
         if id:
+            if controlled:
+                return fetch_controlled_events_list(id=id)
+
             for e in fetch_events_list(100):
                 if e.id == id:
                     return e
@@ -117,8 +136,11 @@ class Query:
                     return e
 
     @strawberry.field
-    def services(self, info, limit: int = 10) -> List[Service]:
+    def services(self, info, limit: int = 10, controlled: bool = True) -> List[Service]:
         # Create instances of Service
+        if controlled:
+            return fetch_controlled_services_list(limit)[:limit]
+
         services_lst = fetch_services_list(limit)
         return services_lst[:limit]
 
