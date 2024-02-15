@@ -48,7 +48,7 @@ class Query:
                     return e
 
     @strawberry.field
-    def domains(self, info, limit: int = 6, controlled: bool = True) -> List[Domain]:
+    def domains(self, info, limit: int = 10, controlled: bool = True) -> List[Domain]:
         if controlled:
             return fetch_domains_list(limit, controlled)
         # Create instances of Domain
@@ -64,7 +64,7 @@ class Query:
 
     @strawberry.field
     def events(
-        self, info, limit: int = 10, id: str = "", controlled: bool = True
+        self, info, limit: int = 100, id: str = "", controlled: bool = True
     ) -> List[Event]:
         # Create instances of Badge, Tag, Owner, and Service
         if controlled:
