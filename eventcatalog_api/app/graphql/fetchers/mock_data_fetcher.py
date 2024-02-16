@@ -731,7 +731,7 @@ def fetch_owners_list(limit: int = 1) -> List[Owner]:
     return OWNERS[:limit]
 
 
-def fetch_domains_list(limit: int = 6, controlled: bool = False) -> List[Domain]:
+def fetch_domains_list(limit: int = 5, controlled: bool = False) -> List[Domain]:
     # Generate domain objects using random generators or any other logic
     if controlled:
         return generate_controlled_domains()
