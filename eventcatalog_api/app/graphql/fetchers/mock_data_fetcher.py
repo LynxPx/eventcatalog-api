@@ -10,6 +10,7 @@ from eventcatalog_api.app.graphql.types.main import (
     generate_domain,
     generate_event_name,
     generate_random_service,
+    generate_service_name,
     get_random_events_list,
 )
 from eventcatalog_api.app.graphql.types.owner import Owner, get_random_owners_list
@@ -752,11 +753,14 @@ def fetch_schema_list(limit: int = 1) -> List[Schema]:
 def fetch_services_list(limit: int = 1) -> List[Service]:
     # Generate service objects using random generators or any other logic
     services = []
-    services_names = ["ServiceA", "ServiceB", "ServiceX", "ServiceY"]
+    # services_names = ["ServiceA", "ServiceB", "ServiceX", "ServiceY"]
 
     for i in range(0, limit):
+        service_details = generate_service_name()
+
         service = Service(
-            name=random.choice(services_names),
+            name=service_details[1],
+            id=service_details[0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),

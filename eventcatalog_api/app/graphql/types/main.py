@@ -28,6 +28,7 @@ DOMAIN_WORDS = [
 @strawberry.type
 class Service:
     name: str
+    id: str
     version: str
     summary: Optional[str] = None
     draft: Optional[bool] = None
@@ -47,15 +48,18 @@ def generate_random_service() -> Service:
     domain_name = random.choice(
         DOMAIN_WORDS
     )  # + "-" + "".join(random.choices(string.digits, k=3))
+    service_details = generate_service_name()
 
     service = Service(
-        name="Random Service",
+        name=service_details[1],
+        id=service_details[0],
         version="1.0.0",
         summary="This is a random service",
         draft=False,  # random.choice([True, False]),
         repository=Repository(url="", language=""),  # generate_random_repo(1),
         domain=Domain(
             name=domain_name,
+            id="missing-id",
             summary="Summary for {}".format(domain_name),
             # services=generate_random_service(), # Nested call causes issues
             events=get_random_events_list(3),
@@ -161,9 +165,27 @@ def generate_event_name() -> str:
     return random.choice(words)
 
 
+def generate_service_name(all=False) -> str:
+    services = [
+        ("8067545f-0099-4c1a-9bc5-11c421295f31", "ServiceA"),
+        ("aee350b4-fdec-4d8c-85a4-126209c6f592", "ServiceB"),
+        ("61faf0c9-1ab8-4596-a2f0-13ea80f98763", "ServiceC"),
+        ("800d5a2e-0841-45a9-9d4b-1482eaf989e4", "ServiceD"),
+        ("cf235599-d9a4-4908-ade0-15d70320c5d5", "ServiceE"),
+        ("a1edc515-303f-426f-b67b-1687fd2e99b6", "ServiceF"),
+        ("9f984574-7831-474f-8d5f-17023f4d8167", "ServiceG"),
+        ("c0d06924-28ef-4e3e-b803-1809a39c81a8", "ServiceH"),
+    ]
+    if all:
+        return services
+    # return random.choice(words) + "-" + "".join(random.choices(string.digits, k=3))
+    return random.choice(services)
+
+
 @strawberry.type
 class Domain:
     name: str
+    id: str
     summary: str
     services: Optional[List["Service"]] = None
     events: Optional[List["Event"]] = None  # Forward Declaration
@@ -175,18 +197,19 @@ class Domain:
 
 def generate_domain() -> str:
     domain_names = [
-        "Intake",
-        "Compliance",
-        "Case Management",
-        "Account Management",
-        "Taxpayer Experience",
-        "Internal Operations",
+        ("Intake", "c0d06924-28ef-4e3e-b803-c901a39c81a1"),
+        ("Compliance", "c0d06924-28ef-4e3e-b803-c902a39c81a2"),
+        ("Case Management", "c0d06924-28ef-4e3e-b803-c903a39c81a3"),
+        ("Account Management", "c0d06924-28ef-4e3e-b803-c904a39c81a4"),
+        ("Taxpayer Experience", "c0d06924-28ef-4e3e-b803-c905a39c81a5"),
+        ("Internal Operations", "c0d06924-28ef-4e3e-b803-c906a39c81a6"),
     ]
 
     domain_name = random.choice(domain_names)
 
     return Domain(
-        name=domain_name,
+        name=domain_name[0],
+        id=domain_name[1],
         summary="Summary for {}".format(domain_name),
         services=generate_random_service(),
         events=get_random_events_list(3),
@@ -201,6 +224,7 @@ def generate_controlled_domains() -> List[Domain]:
     return [
         Domain(
             name="Intake",
+            id="c0d06924-28ef-4e3e-b803-c901a39c81a1",
             summary="Summary for {}".format("Intake"),
             services=generate_random_service(),
             events=get_random_events_list(3),
@@ -211,6 +235,7 @@ def generate_controlled_domains() -> List[Domain]:
         ),
         Domain(
             name="Compliance",
+            id="c0d06924-28ef-4e3e-b803-c902a39c81a2",
             summary="Summary for {}".format("Compliance"),
             services=generate_random_service(),
             events=get_random_events_list(3),
@@ -221,6 +246,7 @@ def generate_controlled_domains() -> List[Domain]:
         ),
         Domain(
             name="Case Management",
+            id="c0d06924-28ef-4e3e-b803-c903a39c81a3",
             summary="Summary for {}".format("Case Management"),
             services=generate_random_service(),
             events=get_random_events_list(3),
@@ -231,6 +257,7 @@ def generate_controlled_domains() -> List[Domain]:
         ),
         Domain(
             name="Account Management",
+            id="c0d06924-28ef-4e3e-b803-c904a39c81a4",
             summary="Summary for {}".format("Account Management"),
             services=generate_random_service(),
             events=get_random_events_list(3),
@@ -241,6 +268,7 @@ def generate_controlled_domains() -> List[Domain]:
         ),
         Domain(
             name="Taxpayer Experience",
+            id="c0d06924-28ef-4e3e-b803-c905a39c81a5",
             summary="Summary for {}".format("Taxpayer Experience"),
             services=generate_random_service(),
             events=get_random_events_list(3),
