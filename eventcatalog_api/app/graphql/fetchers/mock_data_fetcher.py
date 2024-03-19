@@ -86,25 +86,29 @@ def fetch_events_list(limit: int = 10) -> List[Event]:
             consumerNames=["ServiceX", "ServiceY"],
             producers=[
                 Service(
-                    name="ServiceA",
-                    summary="Random summary",
+                    name="Submission Initiator",
+                    id="8067545f-0099-4c1a-9bc5-11c421295f31",
+                    summary="Submission Initiator",
                     version=random.choice(VERSIONS),
                 ),
                 Service(
-                    name="ServiceB",
-                    summary="Random summary",
+                    name="Compliance",
+                    id="aee350b4-fdec-4d8c-85a4-126209c6f592",
+                    summary="Compliance",
                     version=random.choice(VERSIONS),
                 ),
             ],
             consumers=[
                 Service(
-                    name="ServiceX",
-                    summary="Random summary",
+                    name="1040 Validator",
+                    id="61faf0c9-1ab8-4596-a2f0-13ea80f98763",
+                    summary="1040 Validator",
                     version=random.choice(VERSIONS),
                 ),
                 Service(
-                    name="ServiceY",
-                    summary="Random summary",
+                    name="ARS Event(Automated Resolution System)",
+                    id="800d5a2e-0841-45a9-9d4b-1482eaf989e4",
+                    summary="ARS Event(Automated Resolution System)",
                     version=random.choice(VERSIONS),
                 ),
             ],
@@ -144,6 +148,7 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             producers=[
                 Service(
                     name="Submission Initiator",
+                    id="8067545f-0099-4c1a-9bc5-11c421295f31",
                     summary="Submission Initiator",
                     version=random.choice(VERSIONS),
                 )
@@ -151,16 +156,19 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             consumers=[
                 Service(
                     name="Compliance",
+                    id="aee350b4-fdec-4d8c-85a4-126209c6f592",
                     summary="Compliance",
                     version=random.choice(VERSIONS),
                 ),
                 Service(
                     name="1040 Validator",
+                    id="61faf0c9-1ab8-4596-a2f0-13ea80f98763",
                     summary="1040 Validator",
                     version=random.choice(VERSIONS),
                 ),
                 Service(
                     name="ARS Event(Automated Resolution System)",
+                    id="800d5a2e-0841-45a9-9d4b-1482eaf989e4",
                     summary="ARS Event(Automated Resolution System)y",
                     version=random.choice(VERSIONS),
                 ),
@@ -194,6 +202,7 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             producers=[
                 Service(
                     name="Validation Resolution Service",
+                    id="cf235599-d9a4-4908-ade0-15d70320c5d5",
                     summary="Validation Resolution Service",
                     version=random.choice(VERSIONS),
                 )
@@ -201,11 +210,13 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             consumers=[
                 Service(
                     name="Submission Completer",
+                    id="a1edc515-303f-426f-b67b-1687fd2e99b6",
                     summary="Submission Completer",
                     version=random.choice(VERSIONS),
                 ),
                 Service(
                     name="Notification Service",
+                    id="9f984574-7831-474f-8d5f-17023f4d8167",
                     summary="Notification Service",
                     version=random.choice(VERSIONS),
                 ),
@@ -238,6 +249,7 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             producers=[
                 Service(
                     name="Validation Resolution Service",
+                    id="cf235599-d9a4-4908-ade0-15d70320c5d5",
                     summary="Validation Resolution Service",
                     version=random.choice(VERSIONS),
                 )
@@ -270,6 +282,7 @@ def fetch_controlled_events_list(id: str = "") -> List[Event]:
             producers=[
                 Service(
                     name="ARS Event(Automated Resolution System)",
+                    id="800d5a2e-0841-45a9-9d4b-1482eaf989e4",
                     summary="ARS Event(Automated Resolution System)",
                     version=random.choice(VERSIONS),
                 )
