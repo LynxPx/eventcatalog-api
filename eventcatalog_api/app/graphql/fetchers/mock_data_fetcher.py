@@ -794,20 +794,24 @@ def fetch_services_list(limit: int = 1) -> List[Service]:
 
 
 def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
-    services = []
-    services_names = [
-        "Submission Initiator",
-        "Compliance",
-        "1040 Validator",
-        "ARS Event(Automated Resolution System)",
-        "Validation Resolution Service",
-        "Submission Completer",
-        "Notification Service",
+    services = [
+        ("8067545f-0099-4c1a-9bc5-11c421295f31", "Submission Initiator"),
+        ("aee350b4-fdec-4d8c-85a4-126209c6f592", "Compliance"),
+        ("61faf0c9-1ab8-4596-a2f0-13ea80f98763", "1040 Validator"),
+        (
+            "800d5a2e-0841-45a9-9d4b-1482eaf989e4",
+            "ARS Event(Automated Resolution System)",
+        ),
+        ("cf235599-d9a4-4908-ade0-15d70320c5d5", "Validation Resolution Service"),
+        ("a1edc515-303f-426f-b67b-1687fd2e99b6", "Submission Completer"),
+        ("9f984574-7831-474f-8d5f-17023f4d8167", "Notification Service"),
+        ("c0d06924-28ef-4e3e-b803-1809a39c81a8", "ServiceH"),
     ]
 
     return [
         Service(
-            name=services_names[0],
+            name=services[0][1],
+            id=services[0][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -823,7 +827,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[1],
+            name=services[1][1],
+            id=services[1][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -839,7 +844,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[2],
+            name=services[2][1],
+            id=services[2][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -855,7 +861,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[3],
+            name=services[3][1],
+            id=services[3][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -871,7 +878,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[4],
+            name=services[3][1],
+            id=services[3][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -887,7 +895,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[5],
+            name=services[4][1],
+            id=services[4][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),
@@ -903,7 +912,8 @@ def fetch_controlled_services_list(limit: int = 6) -> List[Service]:
             owners=random.sample(OWNERS, random.randint(1, 2)),
         ),
         Service(
-            name=services_names[6],
+            name=services[5][1],
+            id=services[5][0],
             version=random.choice(VERSIONS),
             summary="This is a service",
             draft=random.choice([True, False]),

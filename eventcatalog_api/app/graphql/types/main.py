@@ -139,6 +139,7 @@ def generate_random_event() -> Event:
         alert="Random event alert",
         sampleTrigger=generate_random_schema(),
     )
+
     return event
 
 
@@ -167,13 +168,16 @@ def generate_event_name() -> str:
 
 def generate_service_name(all=False) -> str:
     services = [
-        ("8067545f-0099-4c1a-9bc5-11c421295f31", "ServiceA"),
-        ("aee350b4-fdec-4d8c-85a4-126209c6f592", "ServiceB"),
-        ("61faf0c9-1ab8-4596-a2f0-13ea80f98763", "ServiceC"),
-        ("800d5a2e-0841-45a9-9d4b-1482eaf989e4", "ServiceD"),
-        ("cf235599-d9a4-4908-ade0-15d70320c5d5", "ServiceE"),
-        ("a1edc515-303f-426f-b67b-1687fd2e99b6", "ServiceF"),
-        ("9f984574-7831-474f-8d5f-17023f4d8167", "ServiceG"),
+        ("8067545f-0099-4c1a-9bc5-11c421295f31", "Submission Initiator"),
+        ("aee350b4-fdec-4d8c-85a4-126209c6f592", "Compliance"),
+        ("61faf0c9-1ab8-4596-a2f0-13ea80f98763", "1040 Validator"),
+        (
+            "800d5a2e-0841-45a9-9d4b-1482eaf989e4",
+            "ARS Event(Automated Resolution System)",
+        ),
+        ("cf235599-d9a4-4908-ade0-15d70320c5d5", "Validation Resolution Service"),
+        ("a1edc515-303f-426f-b67b-1687fd2e99b6", "Submission Completer"),
+        ("9f984574-7831-474f-8d5f-17023f4d8167", "Notification Service"),
         ("c0d06924-28ef-4e3e-b803-1809a39c81a8", "ServiceH"),
     ]
     if all:
