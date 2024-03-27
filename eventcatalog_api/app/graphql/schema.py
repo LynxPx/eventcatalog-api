@@ -56,10 +56,10 @@ class Query:
         return domains_lst[:limit]
 
     @strawberry.field
-    def domain(self, info, name: str) -> Optional[Domain]:
-        if name:
+    def domain(self, info, id: str) -> Optional[Domain]:
+        if id:
             for e in fetch_domains_list(DEFAULT_GENERATED_ITEMS_LIMIT):
-                if e.name == name:
+                if e.id == id:
                     return e
 
     @strawberry.field
@@ -145,10 +145,10 @@ class Query:
         return services_lst[:limit]
 
     @strawberry.field
-    def service(self, info, name: str) -> Optional[Service]:
-        if name:
+    def service(self, info, id: str) -> Optional[Service]:
+        if id:
             for e in fetch_services_list(DEFAULT_GENERATED_ITEMS_LIMIT):
-                if e.name == name:
+                if e.id == id:
                     return e
 
     @strawberry.field
